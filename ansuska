@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💘</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        width: 90%;
+        max-width: 420px;
+    }
+
+    h1 {
+        color: #d6336c;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    .name {
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #6f42c1;
+        font-size: 18px;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 15px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 8px;
+        transition: 0.3s;
+        width: 100%;
+    }
+
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+    }
+
+    #noBtn {
+        background-color: #adb5bd;
+        color: black;
+        position: relative;
+    }
+
+    .message {
+        margin-top: 18px;
+        font-weight: bold;
+        color: #212529;
+        min-height: 24px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="name">💘 Vishu ka Pati 💘</div>
+    <h1>Valentine Question</h1>
+    <h2>Will you be my cuttu sa not so gussa karney waala valentine?</h2>
+
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 😒</button>
+
+    <div class="message" id="msg"></div>
+</div>
+
+<script>
+/* ---------- NO BUTTON LOGIC ---------- */
+const noBtn = document.getElementById("noBtn");
+const msg = document.getElementById("msg");
+
+const noMessages = [
+    "Brain.exe not responding.",
+    "Bas drama band karo, haan bol do.",
+    "Rejected your rejection.",
+    "Ye “No” sirf decoration ke liye hai.",
+    "इतना गलत कैसे हो सकते हो?",
+    "Tumhara “No” mere standards pass nahi karta.",
+    "Return to sender: NO not accepted.",
+    "Bold of you to think NO was an option.",
+    "Destiny laughing in the corner right now.",
+    "Tumhe option diya gaya tha, choice nahi.",
+    "Rehne do, tumse nahi ho payega.",
+    "Iss kadar confidence ke saath galat kaise ho sakte ho?"
+];
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+noBtn.addEventListener("click", () => {
+    const randomMsg = noMessages[Math.floor(Math.random() * noMessages.length)];
+    msg.innerText = randomMsg;
+});
+
+/* ---------- MUSIC FUNCTION ---------- */
+function playMusic() {
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://www.youtube.com/embed/9tXfM8wz6Jk?autoplay=1&loop=1&playlist=9tXfM8wz6Jk";
+    iframe.style.display = "none";
+    iframe.allow = "autoplay";
+    document.body.appendChild(iframe);
+}
+
+/* ---------- YES BUTTON LOGIC ---------- */
+document.getElementById("yesBtn").addEventListener("click", () => {
+    playMusic();
+
+    document.querySelector(".card").innerHTML = `
+        <h1>💖 Yayyy! 💖</h1>
+        <h2>You said YES 🥹</h2>
+        <p style="margin-bottom:15px;">🌹 Choose your Valentine reward:</p>
+
+        <button onclick="showResult('smart')">🧠✨ A day full of non-dumb questions and actions</button>
+        <button onclick="showResult('watch')">⌚💝 Wrist watch</button>
+        <button onclick="showResult('movie')">🎬🍿 Movie + Snacks</button>
+        <button onclick="showResult('coffee')">☕💬 Coffee & Endless Talks</button>
+        <button onclick="showResult('night')">🔥💋 One night of intimacy</button>
+
+        <div class="message" id="finalMsg"></div>
+    `;
+});
+
+function showResult(choice) {
+    const msg = document.getElementById("finalMsg");
+
+    const responses = {
+        smart: "A full day of intelligent conversations and zero nonsense guaranteed 😌🧠",
+        watch: "A wrist watch it is ⌚ Time will literally belong to you now 💝",
+        movie: "Movie + snacks locked 🎬🍿 You choose the film, I choose the vibe 😉",
+        coffee: "Coffee date confirmed ☕💬 Talks so deep we forget the time 💘",
+        night: "Choice noted 🔥💋 Tonight follows your wish, your rules 😌"
+    };
+
+    msg.innerText = responses[choice];
+}
+</script>
+
+</body>
+</html>
